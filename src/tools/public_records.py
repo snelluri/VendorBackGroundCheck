@@ -32,12 +32,17 @@ class PublicRecordsClient:
         """Initialize the public records client.
         
         Args:
-            api_key: API key for the public records service (if applicable)
+            api_key: API key for the public records service
         """
-        self.api_key = api_key or settings.PUBLIC_RECORDS_API_KEY
+        # Use provided API key or fallback to environment variable or None
+        self.api_key = api_key or getattr(settings, 'PUBLIC_RECORDS_API_KEY', None)
+        self.base_url = "https://api.publicrecords.example.com/v1"  # Example URL
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
         
-        # Initialize rate limiter (adjust limits based on API constraints)
-        self.rate_limiter = RateLimiter(max_calls=50, time_frame=60)  # 50 calls per minute
+        # Initialize rate limiter (100 queries per day)
+        self.rate_limiter = RateLimiter(max_calls=90, time_frame=24 * 60 * 60)  # 90 calls per 24 hours
         
         # Cache for storing recent queries to avoid duplicate API calls
         self._cache: Dict[str, Dict[str, Any]] = {}

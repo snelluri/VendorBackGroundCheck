@@ -70,8 +70,9 @@ class WebSearchTool:
             api_key: Google Custom Search API key
             cse_id: Google Custom Search Engine ID
         """
-        self.api_key = api_key or settings.GOOGLE_API_KEY
-        self.cse_id = cse_id or settings.GOOGLE_CSE_ID
+        # Use provided API keys or fallback to environment variables or None
+        self.api_key = api_key or getattr(settings, 'GOOGLE_API_KEY', None)
+        self.cse_id = cse_id or getattr(settings, 'GOOGLE_CSE_ID', None)
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }

@@ -1,4 +1,4 @@
-""
+"""
 Example usage of the Vendor Background Check application.
 
 This script demonstrates how to use the application to perform a background check on a vendor.
