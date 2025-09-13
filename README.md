@@ -12,6 +12,15 @@ An AI-powered application for conducting comprehensive background checks on vend
 - **Extensible Architecture**: Easy to add new data sources and analysis modules
 - **Secure**: Environment-based configuration for sensitive data
 
+## 📚 Documentation
+
+Explore our comprehensive documentation to get the most out of the Vendor Background Check application:
+
+- [**User Guide**](USER_GUIDE.md) - Quick start guide and usage instructions
+- [**Architecture**](ARCHITECTURE.md) - System design and component documentation
+- [**Testing Guide**](TESTING.md) - How to run and write tests
+- [**Setup Instructions**](SETUP.md) - Detailed installation and configuration guide
+
 ## 🚀 Quick Start
 
 ### Prerequisites
